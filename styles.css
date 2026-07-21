@@ -480,14 +480,16 @@ body:not(.clinical-locked) .clinical-shield { opacity: 0; visibility: hidden; po
 .site-footer p { margin: 0; color: var(--ink-soft); font-size: 11px; }
 .site-footer p:last-child { text-align: right; }
 .site-footer strong { color: var(--ink); }
- 
+.footer-link { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
+.footer-link:hover { color: var(--lime-dark); }
+
 .consent-dialog, .lightbox {
   border: 0;
   padding: 0;
   color: var(--ink);
   background: transparent;
 }
-.consent-dialog::backdrop, .lightbox::backdrop { background: rgba(13, 17, 39, .78); backdrop-filter: blur(10px); }
+.consent-dialog::backdrop, .lightbox::backdrop { background: rgba(13, 17, 39, .92); }
 .consent-dialog { width: min(650px, calc(100vw - 32px)); padding: 44px; border-radius: 28px; background: white; box-shadow: 0 40px 100px rgba(0,0,0,.3); }
 .dialog-close, .lightbox-close { position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: white; cursor: pointer; }
 .dialog-close svg, .lightbox-close svg { width: 18px; height: 18px; }
@@ -496,24 +498,25 @@ body:not(.clinical-locked) .clinical-shield { opacity: 0; visibility: hidden; po
 .consent-dialog h2 { margin: 0; font: 700 clamp(30px, 4.8vw, 44px)/1.08 "Manrope"; letter-spacing: -.04em; }
 .consent-dialog > p:not(.eyebrow) { color: var(--ink-soft); }
 .dialog-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-.lightbox { width: min(1100px, calc(100vw - 34px)); max-height: 92vh; position: relative; }
+.lightbox { width: min(1040px, calc(100vw - 32px)); max-height: 92vh; position: relative; border-radius: 24px; background: var(--ink); overflow: hidden; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
 .lightbox-close { z-index: 7; color: white; border-color: rgba(255,255,255,.2); background: rgba(13, 17, 39, .7); }
 .lightbox-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 6;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 50%;
   color: white;
-  background: rgba(13, 17, 39, 0.72);
+  background: rgba(13, 17, 39, 0.82);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   cursor: pointer;
-  transition: background .2s, border-color .2s, opacity .2s;
+  transition: background .2s, border-color .2s, opacity .2s, transform .2s;
 }
 .lightbox-nav:hover {
   background: var(--lime);
@@ -521,16 +524,16 @@ body:not(.clinical-locked) .clinical-shield { opacity: 0; visibility: hidden; po
   color: var(--ink);
 }
 .lightbox-nav:disabled {
-  opacity: 0.25;
+  opacity: 0.2;
   cursor: not-allowed;
   pointer-events: none;
 }
 .lightbox-prev { left: 16px; }
 .lightbox-next { right: 16px; }
 .lightbox-nav svg { width: 22px; height: 22px; }
-.lightbox figure { margin: 0; max-height: 92vh; display: flex; flex-direction: column; }
-.lightbox img { max-height: 84vh; width: 100%; object-fit: contain; border-radius: 20px; background: var(--ink); }
-.lightbox figcaption { padding: 12px 4px 0; color: white; font-size: 13px; text-align: center; } }
+.lightbox figure { margin: 0; padding: 20px; max-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--ink); }
+.lightbox img { max-height: 78vh; max-width: 100%; object-fit: contain; border-radius: 16px; background: var(--ink); }
+.lightbox figcaption { padding: 12px 4px 0; color: rgba(255,255,255,.9); font-size: 13px; text-align: center; }
 .noscript-note { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000; padding: 14px; color: white; background: #9a2c2c; text-align: center; }
 
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s var(--ease), transform .75s var(--ease); }

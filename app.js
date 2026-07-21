@@ -60,10 +60,11 @@
 
 
 
-  // Timeline.
+  // Timeline state.
   const timeline = $('[data-timeline]');
-  const records = data.caseStudy.records;
+  const records = data.caseStudy.records || [];
   let activeIndex = 0;
+  let renderRecord = () => {};
 
   if (timeline && records.length) {
     const tabsContainer = $('.timeline-tabs', timeline);
@@ -91,9 +92,10 @@
     });
 
     let animationTimeout = null;
-    const renderRecord = index => {
+    renderRecord = index => {
       activeIndex = clamp(index, 0, records.length - 1);
       const record = records[activeIndex];
+      if (!record) return;
 
       // Atualiza textos clínicos snappily
       dayLabel.textContent = `DIA ${String(record.day).padStart(2, '0')}`;
@@ -150,6 +152,7 @@
   const updateLightboxContent = () => {
     if (lightboxMode === 'clinical') {
       const record = records[activeIndex];
+      if (!record) return;
       lightboxImage.src = record.image;
       lightboxImage.alt = `${record.label}, dia ${record.day}`;
       lightboxCaption.textContent = `${record.label} · Dia ${record.day} · ${record.date}`;
@@ -187,7 +190,11 @@
     sensitivePhoto?.classList.remove('sensitive-blur');
     lightboxMode = 'clinical';
     updateLightboxContent();
-    if (typeof lightbox.showModal === 'function') lightbox.showModal();
+    if (typeof lightbox.showModal === 'function') {
+      lightbox.showModal();
+    } else {
+      lightbox?.setAttribute('open', '');
+    }
   };
 
   $('[data-open-lightbox]')?.addEventListener('click', openClinicalLightbox);
@@ -212,6 +219,25 @@
       updateLightboxContent();
     }
   });
+
+  // Touch Swipe para Lightbox em Dispositivos Móveis
+  let touchStartX = 0;
+  lightbox?.addEventListener('touchstart', event => {
+    touchStartX = event.changedTouches[0].screenX;
+  }, { passive: true });
+  lightbox?.addEventListener('touchend', event => {
+    const touchEndX = event.changedTouches[0].screenX;
+    const diffX = touchEndX - touchStartX;
+    if (Math.abs(diffX) > 40 && lightboxMode === 'clinical') {
+      if (diffX < 0 && activeIndex < records.length - 1) {
+        renderRecord(activeIndex + 1);
+        updateLightboxContent();
+      } else if (diffX > 0 && activeIndex > 0) {
+        renderRecord(activeIndex - 1);
+        updateLightboxContent();
+      }
+    }
+  }, { passive: true });
 
   $('[data-lightbox-close]')?.addEventListener('click', () => lightbox.close());
   lightbox?.addEventListener('click', event => {
