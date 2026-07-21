@@ -16,7 +16,7 @@ window.LABSA_CASE = {
     title: "Estudo de Caso Clínico: Tratamento de Lesão Traumática em Militar da Ativa",
     product: "UrgoClean Ag",
     intervalDays: 3,
-    totalDays: 9,
+    totalDays: 12,
     records: [
       {
         day: 0,
@@ -49,6 +49,14 @@ window.LABSA_CASE = {
         image: "assets/case/registro-04.webp",
         focal: "50% 46%",
         note: "Após o uso contínuo de UrgoClean Ag, observa-se excelente evolução clínica. O leito da lesão apresenta-se limpo, livre de esfacelos e com tecido de granulação saudável em franca expansão. Redução expressiva da área da lesão."
+      },
+      {
+        day: 12,
+        label: "Epitelização e Resolução",
+        date: "Dia 12",
+        image: "assets/case/registro-05.webp",
+        focal: "50% 50%",
+        note: "Acompanhamento após 12 dias do início do protocolo com UrgoClean Ag. O leito da lesão avança com epitelização acentuada, contração evidente das bordas, ausência total de exsudato purulento e estabilização completa do tecido recém-formado."
       }
     ]
   }

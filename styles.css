@@ -297,8 +297,8 @@ body:not(.clinical-locked) .clinical-shield { opacity: 0; visibility: hidden; po
 .timeline-intro > p { margin: 0 0 4px; color: var(--ink-soft); font-size: 15px; }
 .timeline-intro code { padding: 2px 7px; border-radius: 6px; color: var(--ink); background: var(--lime-soft); }
 .timeline-app { margin-top: 12px; }
-.timeline-tabs { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); margin-bottom: 12px; }
-.timeline-tabs::before { content: ""; position: absolute; top: 25px; left: 12.5%; right: 12.5%; height: 1px; background: var(--line); }
+.timeline-tabs { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); margin-bottom: 12px; }
+.timeline-tabs::before { content: ""; position: absolute; top: 25px; left: 10%; right: 10%; height: 1px; background: var(--line); }
 .timeline-tab { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 11px; border: 0; background: none; cursor: pointer; }
 .timeline-tab i { width: 51px; height: 51px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); color: var(--ink-soft); background: #fbfcfa; font: 800 12px "Manrope"; transition: .3s var(--ease); }
 .timeline-tab span { color: var(--ink-soft); font-size: 12px; font-weight: 700; }
