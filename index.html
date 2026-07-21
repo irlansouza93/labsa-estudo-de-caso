@@ -131,16 +131,17 @@
           <div class="timeline-tabs" role="tablist" aria-label="Dias do acompanhamento"></div>
 
           <article class="timeline-panel">
-            <div class="timeline-photo">
+            <div class="timeline-photo sensitive-blur" data-sensitive-photo>
               <img data-record-image src="assets/case/registro-01.webp" alt="">
               <button class="photo-expand" type="button" data-open-lightbox aria-label="Ampliar fotografia">
                 <svg viewBox="0 0 24 24"><path d="M9 4H4v5m11-5h5v5M9 20H4v-5m11 5h5v-5"/></svg>
               </button>
-              <div class="zoom-hint-badge" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M15 15l6 6m-6-6a9 9 0 1 1 1.4-1.4L21 21"/></svg>
-                <span>Clique para ampliar</span>
-              </div>
-              <span class="image-counter" data-image-counter>01 / 04</span>
+              <button class="sensitive-overlay" type="button" data-reveal-sensitive aria-label="Revelar ou ocultar imagem clínica sensível">
+                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <span class="sensitive-text-blur">Conteúdo sensível · Clique para exibir</span>
+                <span class="sensitive-text-clean">Clique para ampliar</span>
+              </button>
+              <span class="image-counter" data-image-counter>01 / 05</span>
             </div>
 
             <div class="timeline-content">

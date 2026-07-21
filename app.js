@@ -165,14 +165,27 @@
     }
   };
 
+  const sensitivePhoto = $('[data-sensitive-photo]');
+  const sensitiveBtn = $('[data-reveal-sensitive]');
+  if (sensitivePhoto && sensitiveBtn) {
+    sensitiveBtn.addEventListener('click', event => {
+      event.stopPropagation();
+      if (sensitivePhoto.classList.contains('sensitive-blur')) {
+        sensitivePhoto.classList.remove('sensitive-blur');
+      } else {
+        openClinicalLightbox();
+      }
+    });
+  }
+
   const openClinicalLightbox = () => {
+    sensitivePhoto?.classList.remove('sensitive-blur');
     lightboxMode = 'clinical';
     updateLightboxContent();
     if (typeof lightbox.showModal === 'function') lightbox.showModal();
   };
 
   $('[data-open-lightbox]')?.addEventListener('click', openClinicalLightbox);
-  $('.timeline-photo')?.addEventListener('click', openClinicalLightbox);
 
   lightboxPrev?.addEventListener('click', event => {
     event.stopPropagation();
