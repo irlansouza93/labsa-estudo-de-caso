@@ -170,11 +170,16 @@
   if (sensitivePhoto && sensitiveBtn) {
     sensitiveBtn.addEventListener('click', event => {
       event.stopPropagation();
-      if (sensitivePhoto.classList.contains('sensitive-blur')) {
-        sensitivePhoto.classList.remove('sensitive-blur');
-      } else {
-        openClinicalLightbox();
-      }
+      sensitivePhoto.classList.remove('sensitive-blur');
+    });
+  }
+
+  const sensitiveComp = $('[data-sensitive-comparison]');
+  const sensitiveCompBtn = $('[data-reveal-comparison]');
+  if (sensitiveComp && sensitiveCompBtn) {
+    sensitiveCompBtn.addEventListener('click', event => {
+      event.stopPropagation();
+      sensitiveComp.classList.remove('sensitive-blur');
     });
   }
 
@@ -186,6 +191,11 @@
   };
 
   $('[data-open-lightbox]')?.addEventListener('click', openClinicalLightbox);
+  sensitivePhoto?.addEventListener('click', event => {
+    if (!sensitivePhoto.classList.contains('sensitive-blur') && !event.target.closest('[data-open-lightbox]')) {
+      openClinicalLightbox();
+    }
+  });
 
   lightboxPrev?.addEventListener('click', event => {
     event.stopPropagation();
