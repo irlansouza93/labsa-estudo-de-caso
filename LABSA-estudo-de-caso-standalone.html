@@ -9,8 +9,8 @@
   <meta property="og:url" content="https://labsa-estudo-de-caso.vercel.app/">
   <meta property="og:title" content="LABSA · Estudo de Caso Clínico (UrgoClean Ag)">
   <meta property="og:description" content="Acompanhamento visual da evolução de lesão traumática em 12 dias. Experiência digital desenvolvida por Irlan Souza na Vibranium Digital.">
-  <meta property="og:image" content="https://labsa-estudo-de-caso.vercel.app/assets/brand/preview-card.jpg?v=3">
-  <meta property="og:image:secure_url" content="https://labsa-estudo-de-caso.vercel.app/assets/brand/preview-card.jpg?v=3">
+  <meta property="og:image" content="https://labsa-estudo-de-caso.vercel.app/assets/brand/preview-card.jpg?v=4">
+  <meta property="og:image:secure_url" content="https://labsa-estudo-de-caso.vercel.app/assets/brand/preview-card.jpg?v=4">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -19,7 +19,7 @@
   <meta name="twitter:url" content="https://labsa-estudo-de-caso.vercel.app/">
   <meta name="twitter:title" content="LABSA · Estudo de Caso Clínico (UrgoClean Ag)">
   <meta name="twitter:description" content="Acompanhamento visual da evolução de lesão traumática em 12 dias. Desenvolvido por Irlan Souza na Vibranium Digital.">
-  <meta name="twitter:image" content="https://labsa-estudo-de-caso.vercel.app/assets/brand/preview-card.jpg?v=3">
+  <meta name="twitter:image" content="https://labsa-estudo-de-caso.vercel.app/assets/brand/preview-card.jpg?v=4">
   <title>LABSA · Estudo de Caso Clínico</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -275,10 +275,44 @@ svg { display: block; fill: none; stroke: currentColor; stroke-width: 1.8; strok
 .note-one { top: 12%; right: -6%; animation: floatY 5.5s ease-in-out infinite; }
 .note-two { left: -8%; bottom: 12%; animation: floatY 6.5s 1s ease-in-out infinite; }
 
-.hero-marquee { position: absolute; left: 0; right: 0; bottom: 0; overflow: hidden; border-block: 1px solid rgba(16,46,42,.09); background: rgba(255,255,255,.45); }
-.hero-marquee > div { width: max-content; display: flex; align-items: center; gap: 28px; padding: 10px 0; animation: marquee 30s linear infinite; }
-.hero-marquee span { font: 800 11px "Manrope"; letter-spacing: .12em; }
-.hero-marquee i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); }
+.hero-marquee {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  border-block: 1px solid rgba(13, 17, 39, .08);
+  background: rgba(255, 255, 255, .7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 4;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeLoop 24s linear infinite;
+  will-change: transform;
+}
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 10px 14px;
+  flex-shrink: 0;
+}
+.marquee-group span {
+  font: 800 11px "Manrope";
+  letter-spacing: .12em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.marquee-group i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
 
 .clinical-media { position: relative; }
 .clinical-media > img, .clinical-media .comparison-stage { transition: filter .5s, transform .5s; }
@@ -588,7 +622,10 @@ body:not(.clinical-locked) .clinical-shield { opacity: 0; visibility: hidden; po
 @keyframes slowSpin { to { transform: rotate(360deg); } }
 @keyframes slowSpinReverse { to { transform: rotate(-360deg); } }
 @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes marqueeLoop {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
 
 @media (max-width: 1050px) {
   :root { --shell: min(100% - 36px, 900px); }
@@ -1209,13 +1246,21 @@ window.LABSA_CASE = {
       </div>
 
       <div class="hero-marquee" aria-hidden="true">
-        <div>
-          <span>TECNOLOGIA APLICADA AO CUIDADO</span><i></i>
-          <span>ACOMPANHAMENTO VISUAL</span><i></i>
-          <span>LABSA SOLUÇÕES EM DIAGNÓSTICO</span><i></i>
-          <span>TECNOLOGIA APLICADA AO CUIDADO</span><i></i>
-          <span>ACOMPANHAMENTO VISUAL</span><i></i>
-          <span>LABSA SOLUÇÕES EM DIAGNÓSTICO</span><i></i>
+        <div class="marquee-track">
+          <div class="marquee-group">
+            <span>TECNOLOGIA APLICADA AO CUIDADO</span><i></i>
+            <span>ACOMPANHAMENTO VISUAL</span><i></i>
+            <span>LABSA SOLUÇÕES EM DIAGNÓSTICO</span><i></i>
+            <span>URGOCLEAN AG</span><i></i>
+            <span>ESTUDO DE CASO CLÍNICO</span><i></i>
+          </div>
+          <div class="marquee-group" aria-hidden="true">
+            <span>TECNOLOGIA APLICADA AO CUIDADO</span><i></i>
+            <span>ACOMPANHAMENTO VISUAL</span><i></i>
+            <span>LABSA SOLUÇÕES EM DIAGNÓSTICO</span><i></i>
+            <span>URGOCLEAN AG</span><i></i>
+            <span>ESTUDO DE CASO CLÍNICO</span><i></i>
+          </div>
         </div>
       </div>
     </section>
