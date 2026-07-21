@@ -186,10 +186,22 @@
     });
   }
 
+  const closeLightbox = () => {
+    if (lightbox?.open) {
+      if (typeof lightbox.close === 'function') {
+        lightbox.close();
+      } else {
+        lightbox.removeAttribute('open');
+      }
+    }
+    document.body.classList.remove('lightbox-open');
+  };
+
   const openClinicalLightbox = () => {
     sensitivePhoto?.classList.remove('sensitive-blur');
     lightboxMode = 'clinical';
     updateLightboxContent();
+    document.body.classList.add('lightbox-open');
     if (typeof lightbox.showModal === 'function') {
       lightbox.showModal();
     } else {
@@ -239,9 +251,12 @@
     }
   }, { passive: true });
 
-  $('[data-lightbox-close]')?.addEventListener('click', () => lightbox.close());
+  $('[data-lightbox-close]')?.addEventListener('click', closeLightbox);
   lightbox?.addEventListener('click', event => {
-    if (event.target === lightbox) lightbox.close();
+    if (event.target === lightbox) closeLightbox();
+  });
+  lightbox?.addEventListener('close', () => {
+    document.body.classList.remove('lightbox-open');
   });
 
   // Before/after comparison.
@@ -290,7 +305,12 @@
             : 'Folheto Técnico UrgoClean Ag · Informações Técnicas (Clique fora para fechar)';
           if (lightboxPrev) lightboxPrev.style.display = 'none';
           if (lightboxNext) lightboxNext.style.display = 'none';
-          if (typeof lightbox.showModal === 'function') lightbox.showModal();
+          document.body.classList.add('lightbox-open');
+          if (typeof lightbox.showModal === 'function') {
+            lightbox.showModal();
+          } else {
+            lightbox?.setAttribute('open', '');
+          }
         }
       } else {
         setProductPage(pageId);
@@ -303,7 +323,7 @@
   document.addEventListener('keydown', event => {
     if (lightbox?.open) {
       if (event.key === 'Escape') {
-        lightbox.close();
+        closeLightbox();
       } else if (lightboxMode === 'clinical') {
         if (event.key === 'ArrowLeft' && activeIndex > 0) {
           renderRecord(activeIndex - 1);

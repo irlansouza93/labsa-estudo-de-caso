@@ -515,7 +515,21 @@ body:not(.clinical-locked) .clinical-shield { opacity: 0; visibility: hidden; po
 .consent-dialog h2 { margin: 0; font: 700 clamp(30px, 4.8vw, 44px)/1.08 "Manrope"; letter-spacing: -.04em; }
 .consent-dialog > p:not(.eyebrow) { color: var(--ink-soft); }
 .dialog-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-.lightbox { width: min(1040px, calc(100vw - 32px)); max-height: 92vh; position: relative; border-radius: 24px; background: var(--ink); overflow: hidden; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
+.lightbox {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
+  width: min(1040px, calc(100vw - 32px));
+  max-height: 92vh;
+  height: max-content;
+  border-radius: 24px;
+  background: var(--ink);
+  overflow: hidden;
+  box-shadow: 0 30px 90px rgba(0,0,0,.6);
+  z-index: 10000 !important;
+}
 .lightbox-close { z-index: 7; color: white; border-color: rgba(255,255,255,.2); background: rgba(13, 17, 39, .7); }
 .lightbox-nav {
   position: absolute;
@@ -658,6 +672,28 @@ body:not(.clinical-locked) .clinical-shield { opacity: 0; visibility: hidden; po
   .lightbox-prev { left: 8px; }
   .lightbox-next { right: 8px; }
   .zoom-hint-badge { display: none; }
+  .lightbox {
+    width: calc(100vw - 16px) !important;
+    max-height: 86vh !important;
+    border-radius: 18px !important;
+  }
+  .lightbox figure {
+    padding: 12px 8px !important;
+  }
+  .lightbox img {
+    max-height: 68vh !important;
+  }
+  .lightbox-close {
+    top: 10px !important;
+    right: 10px !important;
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+body.lightbox-open {
+  overflow: hidden !important;
+  touch-action: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -922,10 +958,22 @@ window.LABSA_CASE = {
     });
   }
 
+  const closeLightbox = () => {
+    if (lightbox?.open) {
+      if (typeof lightbox.close === 'function') {
+        lightbox.close();
+      } else {
+        lightbox.removeAttribute('open');
+      }
+    }
+    document.body.classList.remove('lightbox-open');
+  };
+
   const openClinicalLightbox = () => {
     sensitivePhoto?.classList.remove('sensitive-blur');
     lightboxMode = 'clinical';
     updateLightboxContent();
+    document.body.classList.add('lightbox-open');
     if (typeof lightbox.showModal === 'function') {
       lightbox.showModal();
     } else {
@@ -975,9 +1023,12 @@ window.LABSA_CASE = {
     }
   }, { passive: true });
 
-  $('[data-lightbox-close]')?.addEventListener('click', () => lightbox.close());
+  $('[data-lightbox-close]')?.addEventListener('click', closeLightbox);
   lightbox?.addEventListener('click', event => {
-    if (event.target === lightbox) lightbox.close();
+    if (event.target === lightbox) closeLightbox();
+  });
+  lightbox?.addEventListener('close', () => {
+    document.body.classList.remove('lightbox-open');
   });
 
   // Before/after comparison.
@@ -1026,7 +1077,12 @@ window.LABSA_CASE = {
             : 'Folheto Técnico UrgoClean Ag · Informações Técnicas (Clique fora para fechar)';
           if (lightboxPrev) lightboxPrev.style.display = 'none';
           if (lightboxNext) lightboxNext.style.display = 'none';
-          if (typeof lightbox.showModal === 'function') lightbox.showModal();
+          document.body.classList.add('lightbox-open');
+          if (typeof lightbox.showModal === 'function') {
+            lightbox.showModal();
+          } else {
+            lightbox?.setAttribute('open', '');
+          }
         }
       } else {
         setProductPage(pageId);
@@ -1039,7 +1095,7 @@ window.LABSA_CASE = {
   document.addEventListener('keydown', event => {
     if (lightbox?.open) {
       if (event.key === 'Escape') {
-        lightbox.close();
+        closeLightbox();
       } else if (lightboxMode === 'clinical') {
         if (event.key === 'ArrowLeft' && activeIndex > 0) {
           renderRecord(activeIndex - 1);
