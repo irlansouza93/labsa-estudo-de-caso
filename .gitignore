@@ -1,0 +1,13 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs e temporários
+*.log
+.playwright-mcp/
+
+# Dependências (se aplicável no futuro)
+node_modules/
+dist/
+.vercel/

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Logo LABSA Soluções em Diagnóstico">
+  <!-- Círculo de fundo branco da marca real no perfil -->
+  <circle cx="50" cy="50" r="48" fill="#ffffff" />
+  <!-- As três asas/chamas da marca LABSA -->
+  <g transform="translate(18, 12) scale(0.68)">
+    <!-- Asa do Topo (Azul Claro / Cyan LABSA) -->
+    <path d="M 12 60 C 8 40 24 16 48 6 C 53 4 58 6 56 12 C 53 22 56 32 66 36 C 54 42 41 52 28 62 C 22 66 14 74 12 60 Z" fill="#00AEEF" />
+    <!-- Asa do Meio (Azul Claro / Cyan LABSA) -->
+    <path d="M 6 85 C 2 65 18 41 42 31 C 47 29 52 31 50 37 C 47 47 50 57 60 61 C 48 67 35 77 22 87 C 16 91 8 99 6 85 Z" fill="#00AEEF" />
+    <!-- Asa de Baixo (Violeta / Roxo Escuro LABSA) -->
+    <path d="M 16 100 C 13 85 25 67 43 59 C 47 57 51 59 49 64 C 47 72 49 80 57 83 C 47 88 37 96 27 103 C 23 106 18 111 16 100 Z" fill="#3f3595" />
+  </g>
+</svg>
