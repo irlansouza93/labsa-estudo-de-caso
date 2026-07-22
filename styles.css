@@ -253,22 +253,34 @@ svg { display: block; fill: none; stroke: currentColor; stroke-width: 1.8; strok
   bottom: 0;
   overflow: hidden;
   border-block: 1px solid rgba(13, 17, 39, .08);
-  background: rgba(255, 255, 255, .7);
+  background: rgba(255, 255, 255, .75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 4;
+  pointer-events: none;
 }
 .marquee-track {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
+  width: -webkit-max-content;
   width: max-content;
-  animation: marqueeLoop 24s linear infinite;
+  min-width: 200%;
+  -webkit-animation: marqueeLoop 22s linear infinite !important;
+  animation: marqueeLoop 22s linear infinite !important;
+  -webkit-will-change: transform;
   will-change: transform;
 }
 .marquee-group {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
   align-items: center;
-  gap: 28px;
-  padding: 10px 14px;
+  gap: 24px;
+  padding: 10px 12px;
+  -webkit-flex-shrink: 0;
   flex-shrink: 0;
 }
 .marquee-group span {
@@ -282,6 +294,7 @@ svg { display: block; fill: none; stroke: currentColor; stroke-width: 1.8; strok
   height: 6px;
   border-radius: 50%;
   background: var(--blue);
+  -webkit-flex-shrink: 0;
   flex-shrink: 0;
 }
 
@@ -593,9 +606,25 @@ body:not(.clinical-locked) .clinical-shield { opacity: 0; visibility: hidden; po
 @keyframes slowSpin { to { transform: rotate(360deg); } }
 @keyframes slowSpinReverse { to { transform: rotate(-360deg); } }
 @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@-webkit-keyframes marqueeLoop {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+}
 @keyframes marqueeLoop {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 @media (max-width: 1050px) {
@@ -718,6 +747,6 @@ body.lightbox-open {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  *:not(.marquee-track), *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
