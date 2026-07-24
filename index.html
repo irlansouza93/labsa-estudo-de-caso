@@ -1,351 +1,206 @@
 <!doctype html>
-<html lang="pt-BR" class="no-js">
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0e2d28">
-  <meta name="description" content="Estudo de caso clínico interativo LABSA: acompanhamento visual da evolução de lesão traumática em 12 dias tratada com a cobertura UrgoClean Ag.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://labsa-estudo-de-caso.vercel.app/">
-  <meta property="og:title" content="LABSA · Estudo de Caso Clínico (UrgoClean Ag)">
-  <meta property="og:description" content="Acompanhamento visual da evolução de lesão traumática em 12 dias. Experiência digital desenvolvida por Irlan Souza na Vibranium Digital.">
-  <meta property="og:image" content="https://labsa-estudo-de-caso.vercel.app/assets/brand/preview-card.jpg?v=4">
-  <meta property="og:image:secure_url" content="https://labsa-estudo-de-caso.vercel.app/assets/brand/preview-card.jpg?v=4">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="LABSA Estudo de Caso Clínico">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://labsa-estudo-de-caso.vercel.app/">
-  <meta name="twitter:title" content="LABSA · Estudo de Caso Clínico (UrgoClean Ag)">
-  <meta name="twitter:description" content="Acompanhamento visual da evolução de lesão traumática em 12 dias. Desenvolvido por Irlan Souza na Vibranium Digital.">
-  <meta name="twitter:image" content="https://labsa-estudo-de-caso.vercel.app/assets/brand/preview-card.jpg?v=4">
-  <title>LABSA · Estudo de Caso Clínico</title>
+  <meta name="theme-color" content="#0d1127">
+  <meta name="description" content="Página Desativada Temporariamente pelo Criador. Entre em contato para mais informações.">
+  <title>Página Desativada Temporariamente · LABSA Estudo de Caso</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/brand/labsa-mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <script>document.documentElement.classList.remove('no-js');</script>
-  <script src="case-data.js" defer></script>
-  <script src="app.js" defer></script>
+
+  <style>
+    :root {
+      --bg: #0b0e1b;
+      --card-bg: rgba(19, 25, 49, 0.75);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text: #f0f4fd;
+      --text-muted: #94a3b8;
+      --primary: #25d366;
+      --primary-hover: #20bd5a;
+      --blue-accent: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background Ambient Glows */
+    body::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(37, 211, 102, 0.08) 45%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 580px;
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: 48px 36px;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      margin-bottom: 24px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #ef4444;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ef4444;
+    }
+
+    h1 {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(24px, 5vw, 32px);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+
+    p.description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 16px 28px;
+      background-color: var(--primary);
+      color: #0b0e1b;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 16px;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4);
+    }
+
+    .cta-button:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px -5px rgba(37, 211, 102, 0.5);
+    }
+
+    .cta-button svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .footer-credits {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-credits strong {
+      color: var(--text);
+    }
+
+    .footer-credits a {
+      color: var(--blue-accent);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .footer-credits a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 32px 20px;
+        border-radius: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
-  <div class="reading-progress" aria-hidden="true"><span></span></div>
-
-  <header class="site-header" data-header>
-    <div class="header-shell">
-      <a class="brand" href="#inicio" aria-label="LABSA — voltar ao início">
-        <img src="assets/brand/labsa-mark.svg" alt="" width="46" height="46">
-        <span class="brand-copy">
-          <strong>LABSA</strong>
-          <small>Soluções em Diagnóstico</small>
-        </span>
-      </a>
-
-      <nav class="desktop-nav" aria-label="Navegação principal">
-        <a href="#evolucao">Evolução</a>
-        <a href="#tecnologia">Tecnologia</a>
-        <a href="#labsa">LABSA</a>
-      </nav>
-
-      <a class="button button-small button-dark header-cta" data-maps-link href="#labsa" target="_blank" rel="noopener">
-        Ver localização
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg>
-      </a>
+  <main class="container">
+    <div class="status-badge">
+      <span class="status-dot"></span>
+      Página Desativada Temporariamente
     </div>
-  </header>
 
-  <main id="conteudo">
-    <section class="hero" id="inicio">
-      <div class="hero-grid page-shell">
-        <div class="hero-copy reveal">
-          <p class="eyebrow"><span></span> Estudo de Caso Clínico · LABSA</p>
-          <h1>Tratamento de Lesão <em>Traumática.</em></h1>
-          <p class="hero-lead">Acompanhamento clínico de paciente masculino, 32 anos, militar da ativa, vítima de queda de motocicleta. Análise da evolução da lesão infectada tratada com a cobertura <strong>UrgoClean Ag</strong> após estagnação com hidrogel.</p>
+    <h1>Página Desativada Temporariamente pelo Criador</h1>
 
-          <div class="hero-actions">
-            <a class="button button-primary" href="#evolucao">
-              Acompanhar evolução
-              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m0 0 6-6m-6 6-6-6"/></svg>
-            </a>
-          </div>
+    <p class="description">
+      Se você gostou do projeto ou gostaria de ver uma demonstração / desenvolvimento personalizado para sua empresa, entre em contato diretamente pelo WhatsApp.
+    </p>
 
-          <div class="hero-stats" aria-label="Resumo do acompanhamento">
-            <div><strong>05</strong><span>registros</span></div>
-            <div><strong>03</strong><span>dias entre fotos</span></div>
-            <div><strong>12</strong><span>dias no recorte</span></div>
-          </div>
-        </div>
+    <a class="cta-button" href="https://wa.me/5581999500467?text=Ol%C3%A1%2C%20gostei%20do%20projeto%20do%20estudo%20de%20caso%20LABSA%20e%20gostaria%20de%20entrar%20em%20contato!" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24">
+        <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.001L2 22l5.12-1.341a9.96 9.96 0 0 0 4.887 1.282h.005c5.507 0 9.99-4.479 9.99-9.986 0-2.668-1.037-5.176-2.923-7.062A9.925 9.925 0 0 0 12.012 2zm5.836 14.166c-.244.688-1.42 1.314-1.956 1.396-.499.076-1.144.11-1.841-.113-.427-.136-1.002-.323-1.748-.646-3.08-1.334-5.09-4.475-5.244-4.68-.153-.205-1.254-1.67-1.254-3.183 0-1.513.791-2.257 1.074-2.553.284-.296.621-.37.828-.37.208 0 .416.002.597.01.196.008.458-.074.717.547.267.64.912 2.228.991 2.39.08.163.133.355.027.568-.107.214-.16.347-.318.537-.158.19-.332.424-.474.57-.158.163-.323.34-.139.655.184.316.817 1.349 1.756 2.185 1.206 1.074 2.222 1.406 2.538 1.56.316.153.5.133.687-.08.188-.214.802-.936 1.018-1.258.216-.322.433-.267.728-.158.296.109 1.874.884 2.195 1.043.32.16.535.24.615.375.08.135.08.784-.164 1.472z"/>
+      </svg>
+      Falar no WhatsApp (81) 99950-0467
+    </a>
 
-        <div class="hero-visual reveal reveal-delay-1" aria-label="Prévia do estudo de caso">
-          <div class="orbit orbit-one" aria-hidden="true"></div>
-          <div class="orbit orbit-two" aria-hidden="true"></div>
-
-          <article class="case-preview">
-            <div class="preview-topline">
-              <span>Material Técnico</span>
-              <span class="live-dot"><i></i> Cobertura</span>
-            </div>
-            <div class="preview-image-wrap">
-              <img src="assets/product/urgoclean-frente.webp" alt="Cobertura UrgoClean Ag" loading="eager">
-              <div class="preview-label">
-                <span>TECNOLOGIA</span>
-                <strong>Ag</strong>
-              </div>
-            </div>
-            <div class="preview-footer">
-              <div>
-                <small>Tecnologia utilizada</small>
-                <strong>UrgoClean Ag</strong>
-              </div>
-              <span class="mini-mark"><img src="assets/brand/labsa-mark.svg" alt="LABSA"></span>
-            </div>
-          </article>
-
-          <div class="floating-note note-one" aria-hidden="true">
-            <span>Intervalo</span><strong>72h</strong>
-          </div>
-          <div class="floating-note note-two" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M5 12.5 9.5 17 19 7.5"/></svg>
-            <span>Sequência documentada</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-marquee" aria-hidden="true">
-        <div class="marquee-track">
-          <div class="marquee-group">
-            <span>TECNOLOGIA APLICADA AO CUIDADO</span><i></i>
-            <span>ACOMPANHAMENTO VISUAL</span><i></i>
-            <span>LABSA SOLUÇÕES EM DIAGNÓSTICO</span><i></i>
-            <span>URGOCLEAN AG</span><i></i>
-            <span>ESTUDO DE CASO CLÍNICO</span><i></i>
-          </div>
-          <div class="marquee-group" aria-hidden="true">
-            <span>TECNOLOGIA APLICADA AO CUIDADO</span><i></i>
-            <span>ACOMPANHAMENTO VISUAL</span><i></i>
-            <span>LABSA SOLUÇÕES EM DIAGNÓSTICO</span><i></i>
-            <span>URGOCLEAN AG</span><i></i>
-            <span>ESTUDO DE CASO CLÍNICO</span><i></i>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="timeline-section" id="evolucao">
-      <div class="page-shell">
-        <div class="timeline-intro reveal">
-          <div>
-            <p class="eyebrow"><span></span> Acompanhamento Clínico</p>
-            <h2>Evolução da lesão<br><em>em 12 dias.</em></h2>
-          </div>
-          <p>Selecione cada fase para conferir o progresso visual do leito da ferida e a evolução terapêutica documentada.</p>
-        </div>
-
-        <div class="timeline-app reveal" data-timeline>
-          <div class="timeline-tabs" role="tablist" aria-label="Dias do acompanhamento"></div>
-
-          <article class="timeline-panel">
-            <div class="timeline-photo sensitive-blur" data-sensitive-photo>
-              <img data-record-image src="assets/case/registro-01.webp" alt="">
-              <button class="photo-expand" type="button" data-open-lightbox aria-label="Ampliar fotografia">
-                <svg viewBox="0 0 24 24"><path d="M9 4H4v5m11-5h5v5M9 20H4v-5m11 5h5v-5"/></svg>
-              </button>
-              <div class="sensitive-cover" data-reveal-sensitive role="button" tabindex="0" aria-label="Revelar imagem clínica sensível">
-                <div class="sensitive-badge">
-                  <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                  <span>Conteúdo sensível</span>
-                </div>
-                <p>Fotografia clínica de lesão. Clique para exibir.</p>
-              </div>
-              <span class="image-counter" data-image-counter>01 / 05</span>
-            </div>
-
-            <div class="timeline-content">
-              <div class="record-kicker"><span data-record-day>DIA 00</span><i></i><span data-record-date>Data a confirmar</span></div>
-              <h3 data-record-label>Registro inicial</h3>
-              <p data-record-note></p>
-
-              <dl class="record-facts">
-                <div><dt>Produto</dt><dd>UrgoClean Ag</dd></div>
-                <div><dt>Intervalo</dt><dd>3 dias</dd></div>
-                <div><dt>Tipo</dt><dd>Registro fotográfico</dd></div>
-              </dl>
-
-              <div class="timeline-controls">
-                <button type="button" data-record-prev aria-label="Registro anterior">
-                  <svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg>
-                </button>
-                <div class="timeline-meter"><span></span></div>
-                <button type="button" data-record-next aria-label="Próximo registro">
-                  <svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
-                </button>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <p class="clinical-caption reveal"><strong>Nota:</strong> a ordem foi organizada como sequência visual presumida. Confirme as datas e a cronologia antes da publicação final.</p>
-      </div>
-    </section>
-
-    <section class="comparison-section" id="comparacao">
-      <div class="page-shell comparison-grid">
-        <div class="comparison-copy reveal">
-          <p class="eyebrow eyebrow-light"><span></span> Antes & Depois</p>
-          <h2>Eficácia clínica em<br><em>comparação direta.</em></h2>
-          <p>Arraste o slider central para visualizar a evolução rápida da lesão, partindo do estado inicial de infecção (Dia 0) para o leito em fase avançada de epitelização (Dia 12) após o uso do UrgoClean Ag.</p>
-          <ul class="clean-list">
-            <li><span>01</span> Desbridamento completo do esfacelo</li>
-            <li><span>02</span> Controle eficaz da infecção local</li>
-            <li><span>03</span> Estímulo à formação de tecido saudável</li>
-          </ul>
-        </div>
-
-        <div class="comparison-wrap reveal reveal-delay-1" data-comparison>
-          <div class="comparison-stage sensitive-blur" data-sensitive-comparison>
-            <img class="comparison-base" src="assets/case/registro-05.webp" alt="Registro do dia 12">
-            <div class="comparison-overlay">
-              <img src="assets/case/registro-01.webp" alt="Registro do dia 0">
-            </div>
-            <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação entre o primeiro e o último registro">
-            <div class="comparison-line" aria-hidden="true"><span><svg viewBox="0 0 24 24"><path d="m9 5-7 7 7 7m6-14 7 7-7 7"/></svg></span></div>
-            <span class="compare-tag tag-before">DIA 0</span>
-            <span class="compare-tag tag-after">DIA 12</span>
-
-            <div class="sensitive-cover" data-reveal-comparison role="button" tabindex="0" aria-label="Revelar comparativo sensível">
-              <div class="sensitive-badge">
-                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                <span>Conteúdo sensível</span>
-              </div>
-              <p>Comparativo antes e depois. Clique para exibir.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="technology-section" id="tecnologia">
-      <div class="page-shell technology-grid">
-        <div class="product-visual reveal">
-          <div class="product-page-stack">
-            <button class="product-page active" type="button" data-product-page="front" aria-label="Ver frente do material">
-              <img src="assets/product/urgoclean-frente.webp" alt="Frente do material técnico UrgoClean Ag">
-            </button>
-            <button class="product-page" type="button" data-product-page="back" aria-label="Ver verso do material">
-              <img src="assets/product/urgoclean-verso.webp" alt="Verso do material técnico UrgoClean Ag">
-            </button>
-          </div>
-          <div class="product-switch" role="group" aria-label="Alternar páginas do material técnico">
-            <button class="active" type="button" data-product-switch="front">Frente</button>
-            <button type="button" data-product-switch="back">Informações técnicas</button>
-          </div>
-        </div>
-
-        <div class="technology-copy reveal reveal-delay-1">
-          <p class="eyebrow"><span></span> Mecanismo de Ação</p>
-          <img class="urgo-wordmark" src="assets/brand/urgo-symbol.svg" alt="UrgoClean Ag">
-          <h2>Como atua o curativo<br><em>UrgoClean Ag.</em></h2>
-          <p>A eficácia do produto reside em sua dupla ação: o desbridamento autolítico coeso de esfacelos e a atividade antimicrobiana contínua contra microrganismos patógenos.</p>
-
-          <div class="technology-features">
-            <article>
-              <span>01</span>
-              <div><h3>Matriz Cicatrizante (TLC)</h3><p>Garante um ambiente cicatrizante ideal sob umidade e remoção indolor sem lesar o tecido recém-formado.</p></div>
-            </article>
-            <article>
-              <span>02</span>
-              <div><h3>Fibras Poliabsorventes</h3><p>Fibras de poliacrilato superabsorventes que realizam o desbridamento mecânico e aprisionam o exsudato/esfacelo.</p></div>
-            </article>
-            <article>
-              <span>03</span>
-              <div><h3>Íons de Prata (Ag+)</h3><p>Liberação controlada e contínua no leito da ferida para combater infecções por amplo espectro bacteriano.</p></div>
-            </article>
-            <article>
-              <span>04</span>
-              <div><h3>Ação Anti-esfacelo</h3><p>Transforma o esfacelo em gel facilitando a sua drenagem rápida e indolor na troca do curativo.</p></div>
-            </article>
-          </div>
-
-          <div class="manufacturer-note">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/><path d="M12 10v6m0-9h.01"/></svg>
-            <p><strong>Fonte desta seção:</strong> material impresso do UrgoClean Ag enviado para o projeto. Consulte a embalagem, o fabricante e o profissional responsável antes do uso.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="labsa-section" id="labsa">
-      <div class="page-shell">
-        <div class="labsa-heading reveal">
-          <div>
-            <p class="eyebrow eyebrow-light"><span></span> LABSA · Manaus</p>
-            <h2>Produtos especializados merecem uma presença digital à altura.</h2>
-          </div>
-          <p>Este estudo de caso também funciona como uma amostra do que a LABSA pode transformar em um site próprio: produtos, materiais técnicos, localização, parceiros e experiências documentadas.</p>
-        </div>
-
-        <div class="location-card reveal">
-          <div class="map-wrap">
-            <iframe title="Localização da LABSA em Manaus" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-3.1026555,-60.0075799&z=16&output=embed"></iframe>
-          </div>
-          <div class="location-copy">
-            <img src="assets/brand/labsa-mark.svg" alt="" width="64" height="64">
-            <p class="location-overline">Loja de artigos hospitalares</p>
-            <h3>LABSA Soluções em Diagnóstico</h3>
-            <p>Manaus, Amazonas</p>
-            <div class="location-actions">
-              <a class="button button-primary" data-maps-link href="https://maps.app.goo.gl/WGduTvrcb6qpPFig6" target="_blank" rel="noopener">Abrir no Google Maps <svg viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></a>
-              <a class="text-link" href="#contato">Ver possibilidades para o site <svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="digital-opportunities reveal" id="contato">
-          <p>O que essa experiência pode se tornar</p>
-          <div class="opportunity-row">
-            <span>Catálogo de produtos</span><span>Materiais técnicos</span><span>Parceiros e marcas</span><span>Atendimento comercial</span><span>Conteúdo profissional</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <div class="footer-credits">
+      Projeto desenvolvido por <strong>Irlan Souza · Desenvolvedor Full Stack</strong><br>
+      na <a href="https://vibraniumdigital.com.br" target="_blank" rel="noopener noreferrer">Vibranium Digital</a>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="page-shell footer-grid">
-      <a class="brand brand-footer" href="#inicio">
-        <img src="assets/brand/labsa-mark.svg" alt="" width="44" height="44">
-        <span class="brand-copy"><strong>LABSA</strong><small>Soluções em Diagnóstico</small></span>
-      </a>
-      <p>Estudo de caso visual · Conteúdo demonstrativo</p>
-      <p>Desenvolvido por <strong>Irlan Souza · Desenvolvedor Full Stack</strong> na <a href="https://vibraniumdigital.com.br" target="_blank" rel="noopener" class="footer-link"><strong>Vibranium Digital</strong></a></p>
-    </div>
-  </footer>
-
-
-
-  <dialog class="lightbox" data-lightbox aria-label="Fotografia ampliada">
-    <button class="lightbox-close" type="button" data-lightbox-close aria-label="Fechar fotografia"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
-    <button class="lightbox-nav lightbox-prev" type="button" data-lightbox-prev aria-label="Fotografia anterior">
-      <svg viewBox="0 0 24 24"><path d="m15 19-7-7 7-7"/></svg>
-    </button>
-    <button class="lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="Próxima fotografia">
-      <svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
-    </button>
-    <figure>
-      <img data-lightbox-image src="" alt="">
-      <figcaption data-lightbox-caption></figcaption>
-    </figure>
-  </dialog>
-
-  <noscript>
-    <div class="noscript-note">Ative o JavaScript para usar a linha do tempo, o comparador e as animações desta apresentação.</div>
-  </noscript>
 </body>
 </html>
